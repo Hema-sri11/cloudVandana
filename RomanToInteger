@@ -1,4 +1,4 @@
-public class CovertRomanNumberToInteger{
+public class CovertRomanNumberToInteger {
     public static void main(String[] args){
         String s="IX";
         System.out.println("The  Value of "+s+" is "+converrRomanToInteger(s));

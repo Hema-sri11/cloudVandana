@@ -1,34 +1,35 @@
-import java.util.HashMap;
-
-public class RomanToInteger {
-    public static int romanToInt(String s) {
-        HashMap<Character, Integer> romanValues = new HashMap<>();
-        romanValues.put('I', 1);
-        romanValues.put('V', 5);
-        romanValues.put('X', 10);
-        romanValues.put('L', 50);
-        romanValues.put('C', 100);
-        romanValues.put('D', 500);
-        romanValues.put('M', 1000);
-
-        int result = 0;
-        int n = s.length();
-
-        for (int i = 0; i < n; i++) {
-            int value = romanValues.get(s.charAt(i));
-            if (i < n - 1 && value < romanValues.get(s.charAt(i + 1))) {
-                result -= value;
-            } else {
-                result += value;
-            }
-        }
-
-        return result;
+public class CovertRomanNumberToInteger{
+    public static void main(String[] args){
+        String s="IX";
+        System.out.println("The  Value of "+s+" is "+converrRomanToInteger(s));
     }
 
-    public static void main(String[] args) {
-        String romanNumeral = "IX";
-        int result = romanToInt(romanNumeral);
-        System.out.println("Roman numeral " + romanNumeral + " is equivalent to " + result);
+    public static int value(char r){
+        if(r=='I') return 1;
+        if(r=='V') return 5;
+        if(r=='X') return 10;
+        if(r=='L') return 50;
+        if(r=='C') return 100;
+        if(r=='D') return 500;
+        if(r=='M') return 1000;
+        return -1;
+    }
+    public static int converrRomanToInteger(String s){
+        int total=0;
+        for(int i=0;i<s.length();i++){
+            int s1=value(s.charAt(i));
+            if(i+1<s.length()){
+                int s2=value(s.charAt(i+1));
+                if(s1>=s2){
+                    total+=s1;
+                }else{
+                    total-=s1;
+                } 
+            }else{
+                total+=s1;
+            }
+          
+        }
+        return total;
     }
 }
